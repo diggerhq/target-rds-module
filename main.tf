@@ -37,7 +37,7 @@ resource "random_password" "rds_password" {
 
 resource "aws_db_instance" "digger_rds" {
   identifier             = var.identifier
-  db_name                = var.database_name
+  db_name                = var.db_name
   allocated_storage      = var.allocated_storage
   storage_type           = var.storage_type
   engine                 = var.engine

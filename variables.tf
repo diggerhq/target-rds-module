@@ -6,14 +6,6 @@ variable "allocated_storage" {
   description = "The default storage for the RDS instance"
 }
 
-/*
-variable "iops" {
-  type        = number
-  default     = 1000
-  description = "The default storage for the RDS instance"
-}
-*/
-
 variable "storage_type" {
   default = "gp2"
 }
@@ -39,7 +31,7 @@ variable "instance_class" {
   default = "db.t3.micro"
 }
 
-variable "database_name" {
+variable "db_name" {
   default = "digger"
 }
 
