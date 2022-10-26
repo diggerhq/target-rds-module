@@ -11,14 +11,19 @@ resource "aws_db_subnet_group" "rds_private_subnet_group" {
 resource "aws_security_group" "rds" {
   name_prefix = "${var.aws_app_identifier}-rds-sg"
   vpc_id      = var.vpc_id
-  description = "Digger database ${var.aws_app_identifier}"
+  description = "RDS database ${var.aws_app_identifier}"
 
   # Only postgres in
-  ingress {
-    from_port       = var.rds_port
-    to_port         = var.rds_port
-    protocol        = "tcp"
-    security_groups = var.security_groups
+
+  dynamic "ingress" {
+    for_each = var.security_groups
+    content {
+      name            = volume.ingress.value
+      from_port       = var.rds_port
+      to_port         = var.rds_port
+      protocol        = "tcp"
+      security_groups = var.security_groups
+    }
   }
 
   # Allow all outbound traffic.
