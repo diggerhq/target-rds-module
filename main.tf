@@ -64,7 +64,7 @@ locals {
   database_address  = aws_db_instance.rds_instance.address
   database_password = random_password.rds_password.result
   database_port     = aws_db_instance.rds_instance.port
-  database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.database_name}"
+  database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.db_name}"
 }
 
 resource "aws_ssm_parameter" "database_password" {
