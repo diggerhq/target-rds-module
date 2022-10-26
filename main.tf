@@ -15,8 +15,8 @@ resource "aws_security_group" "rds" {
 
   # Only postgres in
   ingress {
-    from_port       = var.ingress_port
-    to_port         = var.ingress_port
+    from_port       = var.rds_port
+    to_port         = var.rds_port
     protocol        = "tcp"
     security_groups = var.security_groups
   }
@@ -35,7 +35,7 @@ resource "random_password" "rds_password" {
   special = false
 }
 
-resource "aws_db_instance" "digger_rds" {
+resource "aws_db_instance" "rds_instance" {
   identifier             = var.identifier
   db_name                = var.db_name
   allocated_storage      = var.allocated_storage
@@ -44,6 +44,7 @@ resource "aws_db_instance" "digger_rds" {
   engine_version         = var.engine_version
   instance_class         = var.instance_class
   username               = var.database_username
+  port                   = var.rds_port
   password               = random_password.rds_password.result
   snapshot_identifier    = var.snapshot_identifier
   skip_final_snapshot    = true
@@ -60,9 +61,9 @@ resource "aws_db_instance" "digger_rds" {
 }
 
 locals {
-  database_address  = aws_db_instance.digger_rds.address
+  database_address  = aws_db_instance.rds_instance.address
   database_password = random_password.rds_password.result
-  database_port     = aws_db_instance.digger_rds.port
+  database_port     = aws_db_instance.rds_instance.port
   database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.database_name}"
 }
 

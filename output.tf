@@ -1,10 +1,10 @@
 
 output "database_address" {
-  value = aws_db_instance.digger_rds.address
+  value = aws_db_instance.rds_instance.address
 }
 
 output "database_endpoint" {
-  value = aws_db_instance.digger_rds.endpoint
+  value = aws_db_instance.rds_instance.endpoint
 }
 
 output "database_name" {
@@ -20,7 +20,7 @@ output "database_password_ssm_arn" {
 }
 
 output "database_port" {
-  value = aws_db_instance.digger_rds.port
+  value = aws_db_instance.rds_instance.port
 }
 
 output "database_url_ssm_arn" {

@@ -16,7 +16,8 @@ variable "engine" {
   default = "postgres"
 }
 
-variable "ingress_port" {
+variable "rds_port" {
+  default = 5432
 }
 
 variable "connection_schema" {
