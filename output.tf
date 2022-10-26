@@ -7,8 +7,8 @@ output "database_endpoint" {
   value = aws_db_instance.rds_instance.endpoint
 }
 
-output "database_name" {
-  value = var.database_name
+output "db_name" {
+  value = aws_db_instance.rds_instance.db_name
 }
 
 output "database_username" {
