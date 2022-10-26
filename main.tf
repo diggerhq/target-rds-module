@@ -16,9 +16,8 @@ resource "aws_security_group" "rds" {
   # Only postgres in
 
   dynamic "ingress" {
-    for_each = var.security_groups
+    for_each = length(var.security_groups) > 0 ? {test: "test"} : {}
     content {
-      name            = volume.ingress.value
       from_port       = var.rds_port
       to_port         = var.rds_port
       protocol        = "tcp"
