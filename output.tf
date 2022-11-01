@@ -26,3 +26,7 @@ output "database_port" {
 output "database_url_ssm_arn" {
   value = aws_ssm_parameter.database_url.arn
 }
+
+output "database_url_ssm_arn" {
+  value = aws_ssm_parameter.database_url.arn
+}
