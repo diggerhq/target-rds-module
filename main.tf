@@ -74,19 +74,19 @@ locals {
 }
 
 resource "aws_ssm_parameter" "database_password" {
-  name  = "${var.aws_app_identifier}/database_password"
+  name  = "/${var.aws_app_identifier}/database_password"
   value = local.database_password
   type  = "SecureString"
 }
 
 resource "aws_ssm_parameter" "database_connection_string" {
-  name  = "${var.aws_app_identifier}/database_connection_string"
+  name  = "/${var.aws_app_identifier}/database_connection_string"
   value = local.database_connection_string
   type  = "SecureString"
 }
 
 resource "aws_ssm_parameter" "database_url" {
-  name  = "${var.aws_app_identifier}/database_url"
+  name  = "/${var.aws_app_identifier}/database_url"
   value = local.database_url
   type  = "SecureString"
 }
