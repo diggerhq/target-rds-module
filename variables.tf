@@ -32,7 +32,7 @@ variable "instance_class" {
   default = "db.t3.micro"
 }
 
-variable "db_name" {
+variable "database_name" {
   default = "digger"
 }
 

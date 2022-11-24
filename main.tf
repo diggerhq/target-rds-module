@@ -41,7 +41,7 @@ resource "random_password" "rds_password" {
 
 resource "aws_db_instance" "rds_instance" {
   identifier             = var.identifier
-  db_name                = var.db_name
+  db_name                = var.database_name
   allocated_storage      = var.allocated_storage
   storage_type           = var.storage_type
   engine                 = var.engine
@@ -69,7 +69,7 @@ locals {
   database_address  = aws_db_instance.rds_instance.address
   database_password = random_password.rds_password.result
   database_port     = aws_db_instance.rds_instance.port
-  database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.db_name}"
+  database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.database_name}"
   database_connection_string = "Server=${local.database_address};Port=${local.database_port};Database=${local.db_name};User Id=${var.database_username};Password=${local.database_password};"
 }
 
