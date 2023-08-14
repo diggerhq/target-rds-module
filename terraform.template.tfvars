@@ -13,3 +13,4 @@ aws_app_identifier = {{ aws_app_identifier }}
 {{ 'vpc_id="' + vpc_id + '"' if vpc_id is defined  else'' -}}
 {{ 'private_subnets="' + private_subnets + '"' if private_subnets is defined  else'' -}}
 {{ 'security_groups="' + security_groups + '"' if security_groups is defined  else'' -}}
+{{ 'rds_port="' + rds_port + '"' if rds_port is defined  else'' -}}
