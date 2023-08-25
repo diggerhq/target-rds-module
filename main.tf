@@ -69,14 +69,7 @@ locals {
   database_address  = aws_db_instance.rds_instance.address
   database_password = random_password.rds_password.result
   database_port     = aws_db_instance.rds_instance.port
-  database_url      = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.database_name}"
-  database_connection_string = "Server=${local.database_address};Port=${local.database_port};Database=${local.db_name};User Id=${var.database_username};Password=${local.database_password};"
-}
-
-resource "aws_ssm_parameter" "database_password" {
-  name  = "/${var.aws_app_identifier}/database_password"
-  value = local.database_password
-  type  = "SecureString"
+  database_connection_string  = "${var.connection_schema}://${var.database_username}:${local.database_password}@${local.database_address}:${local.database_port}/${var.database_name}"
 }
 
 resource "aws_ssm_parameter" "database_connection_string" {
@@ -85,8 +78,3 @@ resource "aws_ssm_parameter" "database_connection_string" {
   type  = "SecureString"
 }
 
-resource "aws_ssm_parameter" "database_url" {
-  name  = "/${var.aws_app_identifier}/database_url"
-  value = local.database_url
-  type  = "SecureString"
-}
