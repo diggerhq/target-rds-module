@@ -15,16 +15,8 @@ output "database_username" {
   value = var.database_username
 }
 
-output "database_password_ssm_arn" {
-  value = aws_ssm_parameter.database_password.arn
-}
-
 output "database_port" {
   value = aws_db_instance.rds_instance.port
-}
-
-output "database_url_ssm_arn" {
-  value = aws_ssm_parameter.database_url.arn
 }
 
 output "database_connection_string_ssm_arn" {
