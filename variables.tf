@@ -7,7 +7,7 @@ variable "allocated_storage" {
 }
 
 variable "storage_type" {
-  default = "gp2"
+  default = "gp3"
 }
 
 variable "identifier" {}
