@@ -55,6 +55,7 @@ resource "aws_db_instance" "rds_instance" {
   publicly_accessible    = var.publicly_accessible
   vpc_security_group_ids = [aws_security_group.rds.id]
   db_subnet_group_name   = aws_db_subnet_group.rds_private_subnet_group.name
+  apply_immediately      = var.apply_immediately
 
   lifecycle {
     ignore_changes = [

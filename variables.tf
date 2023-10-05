@@ -54,3 +54,7 @@ variable "private_subnets" {}
 
 variable "security_groups" {}
 
+variable "apply_immediately" {
+  default = true 
+}
+
