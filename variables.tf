@@ -55,3 +55,15 @@ variable "subnets" {}
 variable "security_groups" {}
 
 variable "tags" {}
+
+variable "backup_retention_period" {
+  default = 7
+}
+
+variable "multi_az" {
+  default = false
+}
+
+variable "create_replica" {
+  default = false
+}
